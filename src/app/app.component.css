@@ -1,0 +1,54 @@
+.header {
+	position: fixed;
+	right: 0;
+	background-color: #efefef;
+	padding: 10px;
+	color: #c0c0c0;
+	border-bottom-left-radius: 5px;
+	box-shadow: 0px -2px 20px 1px grey;
+	z-index: 15;
+}
+
+.col {
+	background-color: #f1e9c5;
+	border-radius: 10px;
+	padding: 10px;  
+	margin-top: 15px;
+	overflow: hidden;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	background: gainsboro;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding: 10px;   
+	box-shadow: 0px 0px 11px -1px black;
+}
+
+.container {
+	z-index: 10;
+}
+
+
+span.pending:hover {
+	color: black;	
+}
+
+span.pending:active {
+	color: white;	
+}
+
+.pendingNumber {
+}
+
+span.pending {
+	font-size: 2em;
+	margin: 20px;
+	font-weight: 500;
+	text-shadow: 0px 0px 7px white;
+	color: rgb(0, 218, 49);
+	cursor: pointer;
+	transition: color .1s ease-in;
+}

@@ -1,0 +1,33 @@
+
+<!-- Main Content -->
+<div class="container" *ngIf="performances$ | async as performances; else loading">
+  <div class="header">
+    <span class="pending">Pending: {{ getPending(performances) }}</span>
+  </div>
+  <div *ngFor="let performance of performances; let id = index" class="row" >
+    <div class="col col-xs-12">
+      <app-performance [performance]="performance" (performanceDeleted)="performanceDelete(id)"
+      (sessionDeleted)="sessionDelete($event, id)"></app-performance>
+    </div>
+  </div>
+  <button class="btn btn-primary pull-right" 
+  [ngStyle]="performances.length === 0 ? {'width': '50vw', 'height': '40vh', 'position': 'fixed', 'top': 'calc(50% - 20vh)', 'padding': '6px 6px', 'left': 'calc(50% - 25vw)', 'font-size': '5vw'} : 
+  {'margin-top': '10px', 'margin-bottom': '15px', 'margin-right': '-15px'}" 
+  (click)="performanceAdd(performances)">Add Performance</button>
+  <footer class="footer">
+    <div class="container-fluid">
+      <button class="btn btn-success" (click)="commitChanges()">Commit Changes</button>
+      <button class="btn btn-primary" (click)="cancelChanges()">Cancel</button>
+    </div>
+  </footer>
+
+</div>
+<ng-template #loading>
+  <div class="bgimg" style="background: black"></div>
+  <div class="foreground">
+    <div class="perfInfo">
+      <h2  style="color: #c0c0c0">Loading...
+      </h2>
+    </div>
+  </div>
+</ng-template> 

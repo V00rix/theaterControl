@@ -1,0 +1,28 @@
+
+<div *ngIf="viewer; else noviewer" class="container-fluid text-left">
+	<div class="row">
+		<div class="col-xs-6">
+			<h2>
+			{{ viewer.Name }}
+			</h2>
+			<h4>
+			{{ viewer.Phone }}
+			</h4>
+			<h4>
+			{{ viewer.Email }}
+			</h4>
+		</div>
+		<div class="col-xs-3">
+		<p>			
+		{{ optionalFields() }}		
+		</p>
+		</div>
+		<div class="col-xs-3 text-right">
+			<button class="btn btn-primary" (click)="confirmed.emit(true)">Confirm</button>
+			<button class="btn btn-danger" (click)="confirmed.emit(false)">Reject</button>
+		</div>
+	</div>
+</div>
+<ng-template #noviewer>
+	Select Viewer
+</ng-template>

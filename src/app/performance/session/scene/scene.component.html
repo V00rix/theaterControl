@@ -1,0 +1,51 @@
+<div style="display: table; width: 100%; height: 100%; z-index: 10; top: 0">
+	<div class="vdiv text-center">
+		<div class="anotherContainer" style="overflow: scroll;" #scrollElement>
+			<div style="display: table; width: 100%; height: 100%; z-index: 10; top: 0">
+				<div class="vdiv">
+					<div class="no-overflow" [style.height]="(34*(seats.length-1))+'px'" [style.zoom]="zoomFactor">
+						<div class="cont" [style.width]="((34*getLongestRow())+345)+'px'">
+							<div class="rowT" *ngFor="let row of seats; let i = index" [style.width]="(34*getLongestRow()+345)+'px'">
+								<hr class="invisible">
+								<div class="rowInfo">
+									<div class="delete-popup" (click)="deleteRow(i)">Delete row</div><span>{{ seats.length-i }}. row</span>
+								</div>
+								<div *ngFor="let seat of row; let j = index" class="seat"
+								[ngClass]="getClass(i, j)" (click)="showViewer($event, i, j)"  (contextmenu)="onSeatSelected($event, i, j)">{{j + 1}}</div>
+								<div class="rowInfo buttons">
+									<div class="btn-group">
+										<button type="button" class="btn btn-success"
+										(click)="addSeat(i)">+</button>
+										<button type="button" class="btn btn-danger"
+										(click)="deleteSeat(i)">-</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="bottom-btn">
+	<button class="btn" style="width: 150px; height: 50px; font-size: 1.5em; box-shadow: 0px 0px 10px;" (click)="addRow()">Add row</button>
+      <input type="text" class="form-control row-inp" [value]="seatsOnCreation" (input)="creationSeats($event.target.value)">
+    
+</div>
+
+<div class="viewer-container">
+<app-viewer [viewer]="viewer" (confirmed)="onConfirmed($event)"></app-viewer>
+	
+</div>
+
+<div *ngIf="popupDisplayed" class="popup text-center" [style.left]="popupCoords.x + 'px'"  [style.top]="popupCoords.y  + 'px'" (mouseleave)="popupDisplayed = false">
+
+    <ul id='items'>
+      <li (click)="deleteSeat()">Delete</li>
+      <li (click)="addSeat()">Add</li>
+      <li (click)="hideSeat()">Hide</li>
+      <li (click)="showSeat()">Show</li>
+      <li (click)="showViewer()">Viewer</li>  
+    </ul>
+</div>

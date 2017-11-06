@@ -1,0 +1,11 @@
+<div class="container-fluid cont">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<input type="datetime-local" class="sechead pName text-center" [value]="session.date | date:'yyyy-MM-ddThh:mm'" (input)="dateChanged($event)">
+			<div class="scene-cont">
+				<app-scene [seats]="session.seats" (deleteSession)="sessionDelete()"></app-scene>		
+			</div>
+			<button class="btn btn-danger" style="margin-bottom: 15px; background-color: #dc2b26;" (click)="sessionDelete()">Delete Session</button>
+		</div>
+	</div>
+</div>
