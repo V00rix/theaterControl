@@ -1,36 +1,33 @@
-<input type="text" class="sechead pName text-center" [value]="performance.Performance_name | uppercase" (input)="performanceNameChanged($event)">
+<input type="text" class="sechead pName text-center" [value]="performance.title | uppercase"
+       (input)="performanceNameChanged($event)">
 <div class="container-fluid">
-	<div class="input-group man-inp">
-		<span class="input-group-addon">Background image URL</span>
-		<input type="text" class="form-control" [value]="performance.Background_url_path" (input)="bgUrlChanged($event)">
-	</div>
-	<div *ngFor="let prop of performance.info; let id = index" class="row" >
-		<div class="col-xs-3">
-			<input type="text"  class="form-control"  [value]="prop.key" (input)="descriptionKeyChanged($event, id)">
-		</div>
-		<div class="col-xs-9">
-			<div class="input-group">
-				<input type="text" class="form-control" [value]="prop.value" (blur)="onBlur()" (input)="descriptionValueChanged($event, id)">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="button" (click)="descriptionDelete(id)">Delete</button>
-				</span>
-			</div><!-- /input-group -->
-		</div>			
-	</div>
-	<button class="btn btn-primary pull-right" style="margin-top: 10px;" (click)="descriptionAdd()">Add Description Field</button>
+    <div class="input-group man-inp">
+        <span class="input-group-addon">Background image URL</span>
+        <input type="text" class="form-control" [value]="performance.imageUrl" (input)="bgUrlChanged($event)">
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="input-group" style="width: 100%;">
+                <label for="description"></label>
+                <textarea id="description" class="form-control" [value]="performance.description"
+                          style="width: 100%" (blur)="onBlur()" (input)="descriptionValueChanged($event)"></textarea>
+            </div><!-- /input-group -->
+        </div>
+    </div>
 </div>
 <hr>
-<div *ngFor="let session of performance.Sessions; let id = index" class="row" >
-	<div class="col col-xs-12">
-		<app-session [session]="session" (sessionDeleted)="sessionDelete(id)"></app-session>
-	</div>
+<div *ngFor="let session of performance.sessions; let id = index" class="row">
+    <div class="col col-xs-12">
+        <app-session [session]="session" (sessionDeleted)="sessionDelete(id)"></app-session>
+    </div>
 </div>
 <div class="text-right">
-	
-	<button class="btn btn-primary" style="margin-top: 10px;" (click)="sessionAdd()">Add Session</button>
+    <button class="btn btn-primary" style="margin-top: 10px;" (click)="sessionAdd()">Add Session</button>
 </div>
 <hr>
 <div class="text-center">
-	
-	<button class="btn btn-danger" style="margin-bottom: 15px; background-color: #dc2b26;" (click)="performanceDelete()">Delete Performance</button>
+    <button class="btn btn-danger" style="margin-bottom: 15px; background-color: #dc2b26;"
+            (click)="performanceDelete()">Delete Performance
+    </button>
 </div>
