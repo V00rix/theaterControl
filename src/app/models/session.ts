@@ -10,7 +10,7 @@ export class Session {
         for (let i = 0; i < 10; i++) {
             session.seats.push([]);
             for (let j = 0; j < 20; j++) {
-                session.seats[i - 1].push(new Seat(Availability.Available));
+                session.seats[i].push(new Seat(Availability.Available));
             }
         }
         return session;
