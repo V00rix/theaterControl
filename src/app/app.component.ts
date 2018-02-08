@@ -59,4 +59,8 @@ export class AppComponent implements OnInit {
             .reduce((acc, val) => acc + val, 0))
             .reduce((acc, val) => acc + val, 0);
     }
+
+    showViewers() {
+        console.log(this.psv.performances);
+    }
 }

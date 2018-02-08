@@ -11,6 +11,9 @@ import {SceneComponent} from './performance/session/scene/scene.component';
 import {MouseWheelDirective} from './performance/session/scene/mousewheel.directive';
 import {ViewerComponent} from './performance/session/scene/viewer/viewer.component';
 import {DateTransformPipe} from './pipes/date-transform.pipe';
+import {AppRoutingModule} from './app-routing.module';
+import { MainComponent } from './main/main.component';
+import { ViewerTableComponent } from './viewer-table/viewer-table.component';
 
 @NgModule({
     declarations: [
@@ -21,10 +24,13 @@ import {DateTransformPipe} from './pipes/date-transform.pipe';
         SceneComponent,
         MouseWheelDirective,
         ViewerComponent,
-        DateTransformPipe
+        DateTransformPipe,
+        MainComponent,
+        ViewerTableComponent
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
         HttpModule
     ],
     providers: [PerformanceService],
